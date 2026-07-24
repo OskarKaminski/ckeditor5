@@ -152,10 +152,12 @@ export function ObservableMixin( base?: Constructor<Emitter> ): unknown {
 						properties!.set( name, newValue );
 						this.fire<ObservableChangeEvent>( `change:${ name }`, name, newValue, oldValue );
 					}
+					return this
 				}
 			} );
 
 			( this as any )[ name ] = value;
+			return this
 		}
 
 		public bind( ...bindProperties: Array<string> ): any {
